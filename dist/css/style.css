@@ -1,0 +1,15 @@
+.skin-blue .sidebar-menu>li:hover>a, .skin-blue .sidebar-menu>li.active>a, .skin-blue .sidebar-menu>li.menu-open>a {
+  color: #fff;
+background: #043448 !important;
+}
+.skin-blue .sidebar a {
+    color:  #fff !important;
+}
+.skin-green .sidebar-menu > li.menu-open > a:hover{
+  color: #fff !important;
+}
+.skin-blue .sidebar-menu .treeview-menu>li>a {
+background: #043448 !important;
+left:-10px  !important;
+width: 233px !important;
+}
