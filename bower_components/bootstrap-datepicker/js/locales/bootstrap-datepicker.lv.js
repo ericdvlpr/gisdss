@@ -10,10 +10,6 @@
         daysMin: ["Sv", "Pr", "Ot", "Tr", "Ce", "Pk", "Se"],
         months: ["Janvāris", "Februāris", "Marts", "Aprīlis", "Maijs", "Jūnijs", "Jūlijs", "Augusts", "Septembris", "Oktobris", "Novembris", "Decembris"],
         monthsShort: ["Jan", "Feb", "Mar", "Apr", "Mai", "Jūn", "Jūl", "Aug", "Sep", "Okt", "Nov", "Dec"],
-<<<<<<< HEAD
-        monthsTitle: "Mēneši",
-=======
->>>>>>> 348c139e2bbd18748e499cc4d7f20e1f2b097a4b
         today: "Šodien",
         clear: "Nodzēst",
         weekStart: 1

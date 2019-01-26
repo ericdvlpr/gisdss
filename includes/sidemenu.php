@@ -16,7 +16,7 @@
                 <li><a href=""><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
               </ul>
           </li>
-          <li class="treeview">
+          <!-- <li class="treeview">
               <a href="#">
                 <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                 <span class="pull-right-container">
@@ -27,7 +27,7 @@
                 <li><a href=""><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
                 <li><a href=""><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
               </ul>
-          </li>
+          </li> -->
       </ul>
     </section>
     <!-- /.sidebar -->

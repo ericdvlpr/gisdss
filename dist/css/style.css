@@ -13,3 +13,7 @@ background: #043448 !important;
 left:-10px  !important;
 width: 233px !important;
 }
+#map{
+  height: 330px;
+  width: 625px;
+}

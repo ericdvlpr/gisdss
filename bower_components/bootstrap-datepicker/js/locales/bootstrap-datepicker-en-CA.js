@@ -1,10 +1,6 @@
 /**
  * Canadian English translation for bootstrap-datepicker
  * Mike Nacey <mnacey@gmail.com>
-<<<<<<< HEAD
- * DEPRECATED: This filename doesn't follow the convention, use bootstrap-datepicker.en-CA.js instead
-=======
->>>>>>> 348c139e2bbd18748e499cc4d7f20e1f2b097a4b
  */
 ;(function($){
 	$.fn.datepicker.dates['en-CA'] = {
@@ -19,10 +15,4 @@
 		weekStart: 0,
 		format: "yyyy-mm-dd"
 	};
-<<<<<<< HEAD
-
-	$.fn.datepicker.deprecated('This filename doesn\'t follow the convention, use bootstrap-datepicker.en-CA.js instead.');
-
-=======
->>>>>>> 348c139e2bbd18748e499cc4d7f20e1f2b097a4b
 }(jQuery));

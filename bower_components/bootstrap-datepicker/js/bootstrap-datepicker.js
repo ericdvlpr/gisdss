@@ -18,13 +18,8 @@
  * ========================================================= */
 
 (function(factory){
-<<<<<<< HEAD
-    if (typeof define === 'function' && define.amd) {
-        define(['jquery'], factory);
-=======
     if (typeof define === "function" && define.amd) {
         define(["jquery"], factory);
->>>>>>> 348c139e2bbd18748e499cc4d7f20e1f2b097a4b
     } else if (typeof exports === 'object') {
         factory(require('jquery'));
     } else {
@@ -1159,13 +1154,10 @@
 				nextIsDisabled,
 				factor = 1;
 			switch (this.viewMode){
-<<<<<<< HEAD
-=======
 				case 0:
 					prevIsDisabled = year <= startYear && month <= startMonth;
 					nextIsDisabled = year >= endYear && month >= endMonth;
 					break;
->>>>>>> 348c139e2bbd18748e499cc4d7f20e1f2b097a4b
 				case 4:
 					factor *= 10;
 					/* falls through */
@@ -1176,17 +1168,8 @@
 					factor *= 10;
 					/* falls through */
 				case 1:
-<<<<<<< HEAD
-					prevIsDisabled = Math.floor(year / factor) * factor < startYear;
-					nextIsDisabled = Math.floor(year / factor) * factor + factor > endYear;
-					break;
-				case 0:
-					prevIsDisabled = year <= startYear && month < startMonth;
-					nextIsDisabled = year >= endYear && month > endMonth;
-=======
 					prevIsDisabled = Math.floor(year / factor) * factor <= startYear;
 					nextIsDisabled = Math.floor(year / factor) * factor + factor >= endYear;
->>>>>>> 348c139e2bbd18748e499cc4d7f20e1f2b097a4b
 					break;
 			}
 
@@ -1562,14 +1545,6 @@
 				p.setRange(range);
 			});
 		},
-<<<<<<< HEAD
-		clearDates: function(){
-			$.each(this.pickers, function(i, p){
-				p.clearDates();
-			});
-		},
-=======
->>>>>>> 348c139e2bbd18748e499cc4d7f20e1f2b097a4b
 		dateUpdated: function(e){
 			// `this.updating` is a workaround for preventing infinite recursion
 			// between `changeDate` triggering and `setUTCDate` calling.  Until
@@ -2036,11 +2011,7 @@
 
 	/* DATEPICKER VERSION
 	 * =================== */
-<<<<<<< HEAD
-	$.fn.datepicker.version = '1.8.0';
-=======
 	$.fn.datepicker.version = '1.7.1';
->>>>>>> 348c139e2bbd18748e499cc4d7f20e1f2b097a4b
 
 	$.fn.datepicker.deprecated = function(msg){
 		var console = window.console;

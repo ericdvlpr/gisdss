@@ -1,4 +1,5 @@
 </div>
+
       <!-- /.content-wrapper -->
       <footer class="main-footer">
         <div class="pull-right hidden-xs">
@@ -18,9 +19,12 @@
       <script src="bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
       <script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>      <!-- Select2 -->      <script src="bower_components/select2/dist/js/select2.full.min.js"></script>
       <script src="dist/js/adminlte.min.js"></script>
-  		<script src="js/general.js"></script>
-  		<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
-  		<script type="text/javascript">
+      <script src="dist/js/general.js"></script>
+      <script src="dist/js/googlemap.js"></script>
+
+  		<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+      <script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?key=AvvShdvTcK3TECnv9ZnXCPhwmkQ19RJaMXxZbSqNC1VdFAlXStBT2YmL9lrq077H&callback=loadMapScenario' async defer></script>
+      <script type="text/javascript">
 			function printContent(el){
 			var restorepage = document.body.innerHTML;
 			var printcontent = document.getElementById(el).innerHTML;
