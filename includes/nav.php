@@ -21,7 +21,7 @@
         <li class="dropdown user user-menu">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <img src="images/default-user.png" class="user-image" alt="User Image">
-            <span class="hidden-xs">Users</span>
+            <span class="hidden-xs"><?php echo $_SESSION['username']; ?></span>
           </a>
           <ul class="dropdown-menu">
             <!-- User image -->

@@ -1,11 +1,9 @@
 <!-- Developed by: ERIC PAUL JAUCIAN -->
  <?php
-
- // include 'core/database.php';
- // $object = new Database();
- // if(!isset($_SESSION["access"])){
- //   header('location:../login.php');
- // }
+ include 'core/database.php';
+ if(!isset($_SESSION["username"])){
+   header('location:./login.php');
+ }
  ?>
  <html>
       <head>

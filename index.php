@@ -25,7 +25,7 @@
           <div class="row">
             <div class="col-md-9 col-sm-8">
               <div class="pad">
-                
+
                     <div id="map"></div>
                 </div>
               </div>
@@ -124,7 +124,7 @@
       </div>
       <!-- /.info-box -->
 
-      <div class="box box-default">
+      <!-- <div class="box box-default">
         <div class="box-header with-border">
           <h3 class="box-title">Browser Usage</h3>
 
@@ -134,16 +134,16 @@
             <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
           </div>
         </div>
-        <!-- /.box-header -->
+
         <div class="box-body">
           <div class="row">
             <div class="col-md-8">
               <div class="chart-responsive">
                 <canvas id="pieChart" height="195" width="303" style="width: 243px; height: 156px;"></canvas>
               </div>
-              <!-- ./chart-responsive -->
+
             </div>
-            <!-- /.col -->
+
             <div class="col-md-4">
               <ul class="chart-legend clearfix">
                 <li><i class="fa fa-circle-o text-red"></i> Chrome</li>
@@ -154,11 +154,11 @@
                 <li><i class="fa fa-circle-o text-gray"></i> Navigator</li>
               </ul>
             </div>
-            <!-- /.col -->
+
           </div>
-          <!-- /.row -->
+
         </div>
-        <!-- /.box-body -->
+
         <div class="box-footer no-padding">
           <ul class="nav nav-pills nav-stacked">
             <li><a href="#">United States of America
@@ -169,11 +169,10 @@
               <span class="pull-right text-yellow"><i class="fa fa-angle-left"></i> 0%</span></a></li>
           </ul>
         </div>
-        <!-- /.footer -->
       </div>
-      <!-- /.box -->
+      -->
 
-      <!-- PRODUCT LIST -->
+      <!--
       <div class="box box-primary">
         <div class="box-header with-border">
           <h3 class="box-title">Recently Added Products</h3>
@@ -184,7 +183,6 @@
             <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
           </div>
         </div>
-        <!-- /.box-header -->
         <div class="box-body">
           <ul class="products-list product-list-in-box">
             <li class="item">
@@ -199,7 +197,7 @@
                     </span>
               </div>
             </li>
-            <!-- /.item -->
+
             <li class="item">
               <div class="product-img">
                 <img src="dist/img/default-50x50.gif" alt="Product Image">
@@ -212,7 +210,7 @@
                     </span>
               </div>
             </li>
-            <!-- /.item -->
+            <
             <li class="item">
               <div class="product-img">
                 <img src="dist/img/default-50x50.gif" alt="Product Image">
@@ -224,7 +222,6 @@
                     </span>
               </div>
             </li>
-            <!-- /.item -->
             <li class="item">
               <div class="product-img">
                 <img src="dist/img/default-50x50.gif" alt="Product Image">
@@ -237,18 +234,14 @@
                     </span>
               </div>
             </li>
-            <!-- /.item -->
           </ul>
         </div>
-        <!-- /.box-body -->
         <div class="box-footer text-center">
           <a href="javascript:void(0)" class="uppercase">View All Products</a>
         </div>
-        <!-- /.box-footer -->
       </div>
-      <!-- /.box -->
+    -->
     </div>
-    <!-- /.col -->
   </div>
    </section>
 
