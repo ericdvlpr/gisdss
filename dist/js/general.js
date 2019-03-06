@@ -1,19 +1,228 @@
 $(document).ready(function(){
-
-    var userdataTable = $('#user_data').DataTable({
-    "processing": true,
-    "serverSide": true,
-    "order": [],
-    "ajax":{
-     url:"user_fetch.php",
-     type:"POST"
-    },
-    "columnDefs":[
-     {
-      "target":[4,5],
-      "orderable":false
-     }
-    ],
-    "pageLength": 25
+  $('.modal').on('hidden.bs.modal', function () {
+    location.reload();
+      })
+        var userdataTable = $('#userstbl').DataTable({
+          "processing": true,
+          "serverSide": true,
+          "order": [],
+          "ajax":{
+           url:"core/user_fetch.php",
+           type:"POST"
+          },
+          "columnDefs":[
+           {
+            "target":[4,5],
+            "orderable":false
+           }
+          ],
+          "pageLength": 25
+       });
+       var tabledataTable = $('#brgytbl').DataTable({
+         "processing": true,
+         "serverSide": true,
+         "order": [],
+         "ajax":{
+          url:"core/brgy_fetch.php",
+          type:"POST"
+         },
+         "columnDefs":[
+          {
+           "target":[4,5],
+           "orderable":false
+          }
+         ],
+         "pageLength": 10
+      });
+      var warningdataTable = $('#warningtbl').DataTable({
+        "processing": true,
+        "serverSide": true,
+        "order": [],
+        "searching": false,
+         "paging": false,
+        "ajax":{
+         url:"core/warning_fetch.php",
+         type:"POST"
+        },
+        "columnDefs":[
+         {
+          "target":[4,5],
+          "orderable":false
+         }
+        ],
+        "pageLength": 10
+     });
+     var forecastdataTable = $('#forecasttbl').DataTable({
+       "processing": true,
+       "serverSide": true,
+       "order": [],
+       "searching": false,
+        "paging": false,
+       "ajax":{
+        url:"core/forecast_fetch.php",
+        type:"POST"
+       },
+       "columnDefs":[
+        {
+         "target":[4,5],
+         "orderable":false
+        }
+       ],
+       "pageLength": 10
+    });
+   $('#add_button').click(function(){
+      $('#user_form')[0].reset();
+      $('.modal-title').html("<i class='fa fa-plus'></i> Add User");
+      $('#action').val("Add");
+      $('#btn_action').val("Add");
    });
+   $('#input_button').click(function(){
+      var today = new Date();
+      var id = Date.now();
+      var dd = today.getDate();
+      var mm = today.getMonth() + 1;
+      var yyyy = today.getFullYear();
+      today =   mm + '/' + dd + '/' + yyyy  ;
+
+      $('#datepicker').datepicker({
+         autoclose: true,
+         startDate :today,
+         endDate:''
+       }).on("show", function(){
+       $(this).val(today).datepicker('update');
+     });
+     var nextDay = new Date();
+     var ndd = nextDay.getDate() + 1;
+     var nmm = nextDay.getMonth() + 1;
+     var nyyyy = nextDay.getFullYear();
+     nextDay =  nmm + '/' + ndd + '/' + nyyyy;
+     $('#valid_date').datepicker({
+        autoclose: true,
+        startDate :nextDay,
+        endDate:''
+      }).on("show", function(){
+      $(this).val(nextDay).datepicker('update');
+    });
+      $('.modal-title').html("<i class='fa fa-plus'></i> Add Forecast");
+      $('#issue_no').val(id);
+      $('#action').val("Add");
+      $('#btn_action').val("Add");
+   });
+   $(document).on('submit', '#forecast_form', function(event){
+          event.preventDefault();
+          $('#action').attr('disabled','disabled');
+          var form_data = $(this).serialize();
+          $.ajax({
+           url:"core/forecast_action.php",
+           method:"POST",
+           data:form_data,
+           success:function(data)
+           {
+             alert(data);
+            $('#forecast_form')[0].reset();
+            $('#inputModal').modal('hide');
+            $('#alert_action').fadeIn().html('<div class="alert alert-success">'+data+'</div>');
+            $('#action').attr('disabled', false);
+            forecastdataTable.ajax.reload();
+           }
+          })
+     });
+     $(document).on('submit', '#user_form', function(event){
+            event.preventDefault();
+            $('#action').attr('disabled','disabled');
+            var form_data = $(this).serialize();
+            $.ajax({
+             url:"core/user_action.php",
+             method:"POST",
+             data:form_data,
+             success:function(data)
+             {
+               alert(data);
+              $('#user_form')[0].reset();
+              $('#userModal').modal('hide');
+              $('#alert_action').fadeIn().html('<div class="alert alert-success">'+data+'</div>');
+              $('#action').attr('disabled', false);
+              userdataTable.ajax.reload();
+             }
+            })
+       });
+     $(document).on('click', '.updateUser', function(){
+        var user_id = $(this).attr("id");
+        var btn_action = 'fetch_single';
+        $.ajax({
+         url:"core/user_action.php",
+         method:"POST",
+         data:{user_id:user_id, btn_action:btn_action},
+         dataType:"json",
+         success:function(data)
+         {
+          $('#userModal').modal('show');
+          $('#name').val(data.name);
+          $('#username').val(data.username);
+          $('#access').val(data.access);
+          $('.modal-title').html("<i class='fa fa-pencil-square-o'></i> Edit User");
+          $('#user_id').val(user_id);
+          $('#action').val('Edit');
+          $('#btn_action').val('Edit');
+
+         }
+        })
+     });
+     $(document).on('click', '.updateForcast', function(){
+        var forecast_id = $(this).attr("id");
+        var btn_action = 'fetch_single';
+        $.ajax({
+         url:"core/forecast_action.php",
+         method:"POST",
+         data:{forecast_id:forecast_id, btn_action:btn_action},
+         dataType:"json",
+         success:function(data)
+         {
+          $('#inputModal').modal('show');
+          $('#issue_no').val(data.issue_no);
+          $('#datepicker').val(data.issue_date);
+          $('#valid_date').val(data.valid);
+          $('#wind').val(data.wind);
+          $('#wave').val(data.wave);
+          $('#rain').val(data.rain);
+          $('.modal-title').html("<i class='fa fa-pencil-square-o'></i> Edit Forecast");
+          $('#forecast_id').val(forecast_id);
+          $('#action').val('Edit');
+          $('#btn_action').val('Edit');
+
+         }
+        })
+     })
+     $(document).on('click', '.deleteUser', function(){
+          var user_id = $(this).attr("id");
+          var status = $(this).data('status');
+          var btn_action = "delete";
+          if(confirm("Are you sure you want to change status?"))
+          {
+           $.ajax({
+            url:"core/user_action.php",
+            method:"POST",
+            data:{user_id:user_id, status:status, btn_action:btn_action},
+            success:function(data)
+            {
+             $('#alert_action').fadeIn().html('<div class="alert alert-info">'+data+'</div>');
+             userdataTable.ajax.reload();
+            }
+           })
+          }
+          else
+          {
+           return false;
+          }
+     });
+     $(document).on('click','#createAdvi',function(){
+       // var calamity = $(this).data('calam');
+        var today = new Date();
+        var date = today.getFullYear()+''+(today.getMonth()+1)+''+today.getDate();
+        var time = today.getHours() +""+ today.getMinutes() +""+ today.getSeconds();
+        var dateTime = date+''+time;
+        $('#issue_no').val(dateTime);
+        $('#issue_date').val((today.getMonth()+1)+'/'+today.getDate()+'/'+today.getFullYear());
+     });
+
 });

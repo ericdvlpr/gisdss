@@ -1,8 +1,6 @@
 <?php include 'includes/header.php';?>
     <section class="content-header">
-     <h1>
-       Users
-     </h1>
+
 
    </section>
    <section class="content">
@@ -10,7 +8,14 @@
        <div class="col-md-12">
          <div class="box">
              <div class="box-header">
-               <h3 class="box-title">Data Table With Full Features</h3>
+               <div class="pull-right">
+                 <button type="button" name="add" id="add_button" data-toggle="modal" data-target="#userModal" class="btn btn-success btn-md"><i class="fa fa-fw fa-plus"></i> Add</button>
+               </div>
+               <h3 class="box-title">
+                  Users
+                </h3>
+
+
              </div>
              <!-- /.box-header -->
              <div class="box-body">
@@ -19,7 +24,6 @@
                  <tr>
                    <th>Name</th>
                    <th>Username</th>
-                   <th>Access</th>
                    <th>Status</th>
                    <th>Command</th>
                  </tr>
@@ -52,15 +56,19 @@
                  </div>
                   <div class="form-group">
                         <label>Enter User Name</label>
-                        <input type="text" name="user_name" id="user_name" class="form-control" required />
-                   </div>
-                   <div class="form-group">
-                        <label>Enter User Email</label>
-                        <input type="email" name="user_email" id="user_email" class="form-control" required />
+                        <input type="text" name="username" id="username" class="form-control" required />
                    </div>
                    <div class="form-group">
                       <label>Enter User Password</label>
-                      <input type="password" name="user_password" id="user_password" class="form-control" required />
+                      <input type="password" name="password" id="password" class="form-control" required />
+                   </div>
+                   <div class="form-group">
+                      <label>Enter Access Level</label>
+                      <select class="form-control" name="access" id="access" required>
+                        <option value="">Please Select</option>
+                        <option>1</option>
+                        <option>2</option>
+                      </select>
                    </div>
                 </div>
                   <div class="modal-footer">

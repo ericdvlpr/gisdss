@@ -1,13 +1,16 @@
 <!-- Developed by: ERIC PAUL JAUCIAN -->
  <?php
  include 'core/database.php';
+
  if(!isset($_SESSION["username"])){
    header('location:./login.php');
  }
  ?>
+ <!DOCTYPE html>
  <html>
       <head>
    		<title>GISDSS</title>
+        <meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
       <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
       <!-- Font Awesome -->
       <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
@@ -22,6 +25,7 @@
       <link rel="stylesheet" href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
       <!-- Theme style -->
       <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+      <link rel="stylesheet" href="bower_components/weather-icons-master/css/weather-icons.min.css">
       <link rel="stylesheet" href="dist/css/style.css">
       <!-- AdminLTE Skins. Choose a skin from the css/skins
            folder instead of downloading all of them to reduce the load. -->

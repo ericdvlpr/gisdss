@@ -18,6 +18,11 @@
 
     <div class="navbar-custom-menu">
       <ul class="nav navbar-nav">
+        <?php if($_SESSION['access']==0){ ?>
+        <li>
+            <a href="settings.php" ><i class="fa fa-gears"></i></a>
+          </li>
+        <?php } ?>
         <li class="dropdown user user-menu">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <img src="images/default-user.png" class="user-image" alt="User Image">
