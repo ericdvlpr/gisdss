@@ -16,24 +16,7 @@
                                 <div class="col-xs-6">
                                     <h3>Issue #:<?php echo $forecast["issue_no"]; ?></h3>
                                     <h3>Wind: <?php echo $forecast["wind"]; ?> KPH</h3>
-                                    <?php if( $forecast["wind"] == 45 || $forecast["wind"] == 61 ){
-                                      echo '<div class="callout callout-danger">
-                                        <p>Tropical Depressionr</p>
-                                      </div>';
-                                    } elseif($forecast["wind"] == 62 || $forecast["wind"] == 117){
-                                      echo '<div class="callout callout-danger">
-                                        <p>Tropical Storm</p>
-                                      </div>';
-                                    }elseif($forecast["wind"] == 118 || $forecast["wind"] == 219){
-                                      echo '<div class="callout callout-danger">
-                                        <p>Typhoon</p>
-                                      </div>';
-                                    }elseif($forecast["wind"] > 219){
-                                      echo '<div class="callout callout-danger">
-                                        <p>Super Typhoon</p>
-                                      </div>';
-                                    }
-                                    ?>
+
                                     <h3>Wave Height: <?php echo $forecast["wave"]; ?> Feet</h3>
                                     <h3>RainFall: <?php echo $forecast["rain"]; ?> mm/hr</h3>
                                     <h3>Sunrise: <?php echo $forecast["sunrise"]; ?></h3>
@@ -48,8 +31,26 @@
                                    <h3>Moonrise: <?php echo $forecast["moonrise"]; ?></h3>
                                    <h3>Moonset: <?php echo $forecast["moonset"]; ?></h3>
                                  </div>
-                             </div>
-                    </div>
+                  </div>
+                  <?php if( $forecast["wind"] == 45 || $forecast["wind"] == 61 ){
+                    echo '<div class="callout callout-danger">
+                      <h1><strong>ALERT STATUS:</strong>Tropical Depressionr</h1>
+                    </div>';
+                  } elseif($forecast["wind"] == 62 || $forecast["wind"] == 117){
+                    echo '<div class="callout callout-danger">
+                      <h1><strong>ALERT STATUS:</strong>Tropical Storm</h1>
+                    </div>';
+                  }elseif($forecast["wind"] == 118 || $forecast["wind"] == 219){
+                    echo '<div class="callout callout-danger">
+                      <h1><strong>ALERT STATUS:</strong>Typhoon</h1>
+                    </div>';
+                  }elseif($forecast["wind"] > 219){
+                    echo '<div class="callout callout-danger">
+                      <h1><strong>ALERT STATUS:</strong> Super Typhoon</h1>
+                    </div>';
+                  }
+                  ?>
+              </div>
             </div>
             <div class="row">
               <div class="col-md-3 col-sm-6 col-xs-12">
@@ -249,47 +250,40 @@
    </section>
    <div id="inputAdvisory" class="modal fade">
       <div class="modal-dialog">
-        <?php $forecast=check_weather_forecast($connect, $_GET['forecastID']);
-          ?>
+
            <form method="post" id="forecast_form">
               <div class="modal-content">
               <div class="modal-header">
                <button type="button" class="close" data-dismiss="modal">&times;</button>
                <h4 class="modal-title"><i class="fa fa-plus"></i>Create Advisory</h4>
               </div>
-              <div class="modal-body">
-                    <div class="row">
-                      <div class="col-xs-4">
-                          <div class="form-group">
-                              <div class="input-group">
-                                <input type="text" name="issue_no" id="issue_no" class="form-control" placeholder="Issue #" required autocomplete="off" />
-                                <span class="input-group-addon">#</span>
-                              </div>
-                            </div>
-                      </div>
-                      <div class="col-xs-4">
 
+              <div class="modal-body">
+                <div class="row">
+                  <div class="form-group">
+                      <div class="col-xs-3">
+
+                        <input type="email" class="form-control" name="issue_no" id="issue_no" >
                       </div>
-                      <div class="col-xs-4">
-                        <div class="form-group">
-                          <div class="input-group">
-                              <input type="text" name="issue_date" id="issue_date" class="form-control" placeholder="Valid Date" required autocomplete="off" />
-                              <span class="input-group-addon"><i class="fa fa-fw fa-calendar"></i></span>
-                            </div>
-                        </div>
+                  </div>
+                  <div class="form-group">
+                      <div class="col-xs-3">
+                      
+                        <input type="email" class="form-control" name="issue_date" id="issue_date">
                       </div>
-                    </div>
+                  </div>
+              </div>
                     <div class="row">
                       <div class="col-xs-4">
-                        <input type="text" name="issue_date" id="issue_date" class="form-control" value="<?php $forecast["wind"]; ?>" />
+                        <input type="text" name="alrt_wind" class="form-control" value="<?php echo $forecast["wind"]; ?>" />
                         <span class="input-group-addon"><i class="fa fa-fw fa-calendar"></i></span>
                       </div>
                       <div class="col-xs-4">
-                        <input type="text" name="issue_date" id="issue_date" class="form-control" value="<?php $forecast["wave"]; ?>" />
+                        <input type="text" name="alrt_wave"  class="form-control" value="<?php echo $forecast["wave"]; ?>" />
                         <span class="input-group-addon"><i class="fa fa-fw fa-calendar"></i></span>
                       </div>
                       <div class="col-xs-4">
-                        <input type="text" name="issue_date" id="issue_date" class="form-control" value="<?php $forecast["rain"]; ?>" />
+                        <input type="text" name="alrt_rain"  class="form-control" value="<?php echo $forecast["rain"]; ?>" />
                         <span class="input-group-addon"><i class="fa fa-fw fa-calendar"></i></span>
                       </div>
                     </div>

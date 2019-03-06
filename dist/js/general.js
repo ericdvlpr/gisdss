@@ -223,6 +223,7 @@ $(document).ready(function(){
         var dateTime = date+''+time;
         $('#issue_no').val(dateTime);
         $('#issue_date').val((today.getMonth()+1)+'/'+today.getDate()+'/'+today.getFullYear());
+        $
      });
 
 });
