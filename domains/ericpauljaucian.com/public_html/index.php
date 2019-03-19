@@ -237,10 +237,10 @@
                             <div class="col-md-4 design">
                                 <div class="portfolio_item">
                                     <div class="portfolio_img">
-                                        <img src="img/portfolio/portfolio2.jpg" alt="" width="300px" height="150px">
+                                        <img src="img/portfolio/tps.PNG" alt="" width="300px" height="150px">
                                     </div>
                                     <div class="portfolio_title">
-                                        <a href="portfolio/demo1/index.php"><h4>BASIC PHP PDO CRUD</h4></a>
+                                        <a href="portfolio/gfctps/login.php"><h4>Transaction Processing System</h4></a>
                                     </div>
                                 </div>
                             </div>

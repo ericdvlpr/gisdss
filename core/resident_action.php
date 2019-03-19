@@ -6,71 +6,67 @@ if(isset($_POST['btn_action']))
  if($_POST['btn_action'] == 'Add')
  {
   $query = "
-  INSERT INTO users (name, username, password, access, brgy)
-  VALUES (:name, :username, :password, :access, :brgy)
+  INSERT INTO resident (res_name, res_brgy,res_username, res_password)
+  VALUES (:res_name, :res_barangay ,:res_username, :res_password)
   ";
   $statement = $connect->prepare($query);
   $statement->execute(
    array(
-    ':name'  => $_POST["name"],
-    ':password' => password_hash($_POST["password"], PASSWORD_DEFAULT),
-    ':username'  => $_POST["username"],
-    ':access'  => $_POST['access'],
-    ':brgy'  => $_POST['brgy']
+    ':res_name'  => $_POST["res_name"],
+    ':res_password' => password_hash($_POST["res_password"], PASSWORD_DEFAULT),
+    ':res_username'  => $_POST["res_username"],
+    ':res_barangay'  => $_POST['res_brgy']
    )
   );
   $result = $statement->fetchAll();
   if(isset($result))
   {
-   echo 'New User Added';
+   echo 'New Resident Added';
   }
  }
  if($_POST['btn_action'] == 'fetch_single')
  {
   $query = "
-  SELECT * FROM users WHERE user_id = :user_id
+  SELECT * FROM resident WHERE res_id = :res_id
   ";
   $statement = $connect->prepare($query);
   $statement->execute(
    array(
-    ':user_id' => $_POST["user_id"]
+    ':res_id' => $_POST["res_id"]
    )
   );
   $result = $statement->fetchAll();
   foreach($result as $row)
   {
-   $output['name'] = $row['name'];
-   $output['username'] = $row['username'];
-   $output['access'] = $row['access'];
-   $output['password'] = $row['password'];
-   $output['brgy'] = $row['brgy'];
+   $output['res_name'] = $row['res_name'];
+   $output['res_username'] = $row['res_username'];
+   $output['res_password'] = $row['res_password'];
+   $output['res_brgy'] = $row['res_brgy'];
   }
   echo json_encode($output);
  }
 
  if($_POST['btn_action'] == 'Edit')
  {
-  if($_POST['password'] != '')
+  if($_POST['res_password'] != '')
   {
    $query = "
-   UPDATE users SET
-    name = '".$_POST["name"]."',
-    username = '".$_POST["username"]."',
-    password = '".password_hash($_POST["password"], PASSWORD_DEFAULT)."',
-    access = '".$_POST["access"]."',
-    brgy = '".$_POST["brgy"]."'
-    WHERE user_id = '".$_POST["user_id"]."'
+   UPDATE resident SET
+    res_name = '".$_POST["res_name"]."',
+    res_username = '".$_POST["res_username"]."',
+    res_password = '".password_hash($_POST["res_password"], PASSWORD_DEFAULT)."',
+    res_brgy = '".$_POST["res_brgy"]."'
+    WHERE res_id = '".$_POST["res_id"]."'
    ";
   }
   else
   {
    $query = "
-   UPDATE users SET
-   name = '".$_POST["name"]."',
-   username = '".$_POST["username"]."',
-   access = '".$_POST["access"]."',
-   brgy = '".$_POST["brgy"]."'
-    WHERE user_id = '".$_POST["user_id"]."'
+   UPDATE resident SET
+   res_name = '".$_POST["res_name"]."',
+   res_username = '".$_POST["res_username"]."',
+   res_brgy = '".$_POST["res_brgy"]."'
+    WHERE res_id = '".$_POST["res_id"]."'
    ";
   }
   $statement = $connect->prepare($query);
@@ -78,7 +74,7 @@ if(isset($_POST['btn_action']))
   $result = $statement->fetchAll();
   if(isset($result))
   {
-   echo 'User Details Edited';
+   echo 'Resident Details Edited';
   }
  }
  if($_POST['btn_action'] == 'delete')

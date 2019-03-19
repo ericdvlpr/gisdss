@@ -5,24 +5,24 @@ if(isset($_POST['btn_action']))
 {
  if($_POST['btn_action'] == 'Add')
  {
-  $query = "
-  INSERT INTO users (name, username, password, access, brgy)
-  VALUES (:name, :username, :password, :access, :brgy)
+   $query = "
+  INSERT INTO advisory (issue_no, issue_date, alrt_wind, alrt_wave, alrt_rain)
+  VALUES (:issue_no, :issue_date, :alrt_wind, :alrt_wave, :alrt_rain)
   ";
   $statement = $connect->prepare($query);
   $statement->execute(
    array(
-    ':name'  => $_POST["name"],
-    ':password' => password_hash($_POST["password"], PASSWORD_DEFAULT),
-    ':username'  => $_POST["username"],
-    ':access'  => $_POST['access'],
-    ':brgy'  => $_POST['brgy']
+    ':issue_no'  => $_POST["issue_no"],
+    ':issue_date' => $_POST["issue_date"],
+    ':alrt_wind'  => $_POST["alrt_wind"],
+    ':alrt_wave'  => $_POST['alrt_wave'],
+    ':alrt_rain'  => $_POST['alrt_rain']
    )
   );
   $result = $statement->fetchAll();
   if(isset($result))
   {
-   echo 'New User Added';
+   echo 'New Advisory Added';
   }
  }
  if($_POST['btn_action'] == 'fetch_single')
@@ -42,8 +42,6 @@ if(isset($_POST['btn_action']))
    $output['name'] = $row['name'];
    $output['username'] = $row['username'];
    $output['access'] = $row['access'];
-   $output['password'] = $row['password'];
-   $output['brgy'] = $row['brgy'];
   }
   echo json_encode($output);
  }
@@ -56,9 +54,7 @@ if(isset($_POST['btn_action']))
    UPDATE users SET
     name = '".$_POST["name"]."',
     username = '".$_POST["username"]."',
-    password = '".password_hash($_POST["password"], PASSWORD_DEFAULT)."',
-    access = '".$_POST["access"]."',
-    brgy = '".$_POST["brgy"]."'
+    password = '".password_hash($_POST["password"], PASSWORD_DEFAULT)."'
     WHERE user_id = '".$_POST["user_id"]."'
    ";
   }
@@ -68,8 +64,6 @@ if(isset($_POST['btn_action']))
    UPDATE users SET
    name = '".$_POST["name"]."',
    username = '".$_POST["username"]."',
-   access = '".$_POST["access"]."',
-   brgy = '".$_POST["brgy"]."'
     WHERE user_id = '".$_POST["user_id"]."'
    ";
   }

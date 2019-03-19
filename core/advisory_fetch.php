@@ -5,7 +5,7 @@ $query = '';
 $output = array();
 
 $query .= "
-SELECT * FROM barangay
+SELECT * FROM advisory
 ";
 
 // if(isset($_POST["search"]["value"]))
@@ -42,10 +42,9 @@ $filtered_rows = $statement->rowCount();
 foreach($result as $row)
 {
  $sub_array = array();
- $sub_array[] = $row['brgy_id'];
- $sub_array[] = $row['brgy_name'];
- $sub_array[] = $row['lat'].' '. $row['longi'];
- $sub_array[] = number_format($row['population'],2);
+ $sub_array[] = $row['issue_no'];
+ $sub_array[] = $row['issue_date'];
+ $sub_array[] = '<a href="viewAdvisory.php?advisoryID='.$row["advisory_id"].'" name="view" id="'.$row["advisory_id"].'" class="btn btn-info btn-xs viewForcast">View</a> <button type="button" name="update" id="'.$row["advisory_id"].'" class="btn btn-warning btn-xs updateForcast">Update</button>';
  $data[] = $sub_array;
 }
 
@@ -59,7 +58,7 @@ echo json_encode($output);
 
 function get_total_all_records($connect)
 {
- $statement = $connect->prepare("SELECT * FROM barangay");
+ $statement = $connect->prepare("SELECT * FROM forecast");
  $statement->execute();
  return $statement->rowCount();
 }

@@ -75,6 +75,7 @@ function check_action_plan($connect, $wind, $wave, $rain,$warningID){
   foreach($result1 as $row1)
   {
     $criteria= '';
+    $result2 = array();
     $criteria = explode('-',$row1['criteria']);
 
     // print_r($wave>=$criteria[1] && $wind>$criteria[1]);
@@ -89,7 +90,7 @@ function check_action_plan($connect, $wind, $wave, $rain,$warningID){
     if($row1['warning_plan_id'] == 2 && $warningID== 'storm'){
       if($wave>=@$criteria[1] || $wind>@$criteria[1]){
         $query = 'SELECT * FROM barangay WHERE storm_surge = 1';
-        $result2=check_barangay_flood($connect,$query,'storm');
+        $result2=check_barangay_storm_surge($connect,$query,'storm');
         return $result2;
       }
     }
@@ -97,7 +98,7 @@ function check_action_plan($connect, $wind, $wave, $rain,$warningID){
     if($row1['warning_plan_id'] == 3 && $warningID== 'flood'){
       if($rain>=@$criteria[1]){
         $query = 'SELECT * FROM barangay WHERE flood = 1';
-        $result2=check_barangay_storm_surge($connect,$query,'flood');
+        $result2=check_barangay_flood($connect,$query,'flood');
         return $result2;
       }
     }
@@ -146,7 +147,6 @@ function check_barangay_storm_surge($connect, $query,$id){
   return $listOutput;
 }
 function check_barangay_landslide($connect, $query,$id){
-  $listOutput = array();
   $statement = $connect->prepare($query);
   $statement->execute();
   $result = $statement->fetchAll();
@@ -171,8 +171,54 @@ function check_barangay_tsunami($connect, $query,$id){
   }
   return $listOutput;
 }
-
-
-
-
+function post_advisory($connect){
+  $listOutput = array();
+  $statement = $connect->prepare("SELECT * FROM advisory");
+  $statement->execute();
+  $result = $statement->fetchAll();
+  return $result;
+}
+function get_barangay($connect){
+  $output ='';
+  $statement = $connect->prepare("SELECT * FROM barangay");
+  $statement->execute();
+  $result = $statement->fetchAll();
+  $output = '<option value="">Please Select</option>';
+  foreach($result as $row){
+    $output .= '<option value='.$row['brgy_id'].'>'.$row['brgy_name'].'</option>';
+  }
+  return $output;
+}
+function get_resident_brgy($connect, $brgy_id){
+  $statement = $connect->prepare("SELECT * FROM barangay WHERE brgy_id ='$brgy_id'");
+  $statement->execute();
+  $result = $statement->fetch();
+  $brgy_name = $result['brgy_name'];
+  return $brgy_name;
+}
+function check_barangay_status($connect, $bid){
+  $statement = $connect->prepare("SELECT * FROM barangay WHERE brgy_id ='$bid'");
+  $statement->execute();
+  $result = $statement->fetchALL();
+  foreach($result as $row){
+    if($row['flood']== 1){
+      $status = 'flood';
+    }elseif($row['storm_surge']== 1){
+        $status = 'storm';
+    }elseif($row['landslide']== 1){
+        $status = 'landslide';
+    }
+  }
+  return $status;
+}
+function list_barangay($connect){
+  $output ='';
+  $statement = $connect->prepare("SELECT * FROM barangay");
+  $statement->execute();
+  $result = $statement->fetchAll();
+  foreach($result as $row){
+    $output .= '<li class="item">'.$row['brgy_name'].'</li>';
+  }
+  return $output;
+}
  ?>

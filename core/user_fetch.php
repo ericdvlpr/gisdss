@@ -1,5 +1,6 @@
 <?php
 include('database.php');
+include('function.php');
 $query = '';
 
 $output = array();
@@ -43,20 +44,16 @@ $filtered_rows = $statement->rowCount();
 
 foreach($result as $row)
 {
- $status = '';
- if($row["active"] == 1)
- {
-  $status = '<span class="label label-success">Active</span>';
- }
- else
- {
-  $status = '<span class="label label-danger">Inactive</span>';
- }
+  if($row['brgy'] != 0){
+    $brgy = get_resident_brgy($connect,$row['brgy']);
+  }else{
+    $brgy = 'N/A';
+  }
  $sub_array = array();
  $sub_array[] = $row['name'];
  $sub_array[] = $row['username'];
- $sub_array[] = $status;
- $sub_array[] = '<button type="button" name="update" id="'.$row["user_id"].'" class="btn btn-warning btn-xs updateUser">Update</button> <button type="button" name="delete" id="'.$row["user_id"].'" class="btn btn-danger btn-xs deleteUser" data-status="'.$row["active"].'">Delete</button>';
+ $sub_array[] = $brgy;
+ $sub_array[] = '<button type="button" name="update" id="'.$row["user_id"].'" class="btn btn-warning btn-xs updateUser">Update</button>';
  $data[] = $sub_array;
 }
 
@@ -70,7 +67,7 @@ echo json_encode($output);
 
 function get_total_all_records($connect)
 {
- $statement = $connect->prepare("SELECT * FROM users WHERE active=1");
+ $statement = $connect->prepare("SELECT * FROM users WHERE access != '0' ");
  $statement->execute();
  return $statement->rowCount();
 }

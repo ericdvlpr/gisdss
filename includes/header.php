@@ -1,5 +1,6 @@
-<!-- Developed by: ERIC PAUL JAUCIAN -->
+
  <?php
+ //Developed by: ERIC PAUL JAUCIAN
  include 'core/database.php';
 
  if(!isset($_SESSION["username"])){
@@ -42,3 +43,15 @@
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
           <!-- Content Header (Page header) -->
+          <section class="content-header">
+            <div class="info-box">
+            <span class="info-box-icon bg-aqua"><img src="images/pioduran-logo.png" class="img-circle" alt="User Image" width="90" height="90"></span>
+
+            <div class="info-box-content">
+              <h1> Municipality of Pioduran Flood and Storm Surge Awareness GIS-BASED DSS</h1>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+
+
+         </section>

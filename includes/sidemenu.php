@@ -8,6 +8,9 @@
               <a href="index.php"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a>
           </li>
           <li>
+              <a href="advisory.php"><i class="fa fa-file"></i> <span>Advisory</span></a>
+          </li>
+          <li>
               <a href="forecast.php"><i class="fa fa-cloud"></i> <span>Forecast</span></a>
           </li>
           <li class="treeview">
@@ -17,12 +20,15 @@
                 </span>
               </a>
               <ul class="treeview-menu">
-                <li><a href="reports.php?type=rainfall"><i class="fa fa-circle-o"></i> Rain Fall</a></li>
-                <li><a href="reports.php?type=floodlevel"><i class="fa fa-circle-o"></i> Flood Level</a></li>
+                <!-- <li><a href="reports.php?type=rainfall"><i class="fa fa-circle-o"></i> Rain Fall</a></li>
+                <li><a href="reports.php?type=floodlevel"><i class="fa fa-circle-o"></i> Flood Level</a></li> -->
                 <li><a href="reports.php?type=hisdata"><i class="fa fa-circle-o"></i> Historical Data</a></li>
-                <li><a href="reports.php?type=hazZone"><i class="fa fa-circle-o"></i> Hazard Zones</a></li>
-                <li><a href="reports.php?type=evacen"><i class="fa fa-circle-o"></i> Evacuation Centers</a></li>
+                <!-- <li><a href="reports.php?type=hazZone"><i class="fa fa-circle-o"></i> Hazard Zones</a></li> -->
+                <!-- <li><a href="reports.php?type=evacen"><i class="fa fa-circle-o"></i> Evacuation Centers</a></li> -->
               </ul>
+          </li>
+          <li>
+              <a href="residents.php"><i class="fa fa-user"></i> <span>Resident</span></a>
           </li>
           <li>
               <a href="users.php"><i class="fa fa-user"></i> <span>Users</span></a>

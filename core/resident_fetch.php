@@ -1,12 +1,12 @@
 <?php
 include('database.php');
+include 'function.php';
 $query = '';
 
 $output = array();
 
-$query .= "
-SELECT * FROM barangay
-";
+$query = "SELECT * FROM resident";
+
 
 // if(isset($_POST["search"]["value"]))
 // {
@@ -42,10 +42,9 @@ $filtered_rows = $statement->rowCount();
 foreach($result as $row)
 {
  $sub_array = array();
- $sub_array[] = $row['brgy_id'];
- $sub_array[] = $row['brgy_name'];
- $sub_array[] = $row['lat'].' '. $row['longi'];
- $sub_array[] = number_format($row['population'],2);
+ $sub_array[] = $row['res_name'];
+ $sub_array[] = get_resident_brgy($connect,$row['res_brgy']);
+ $sub_array[] = '<button type="button" name="update" id="'.$row["res_id"].'" class="btn btn-warning btn-xs updateRes">Update</button>';
  $data[] = $sub_array;
 }
 
@@ -59,7 +58,7 @@ echo json_encode($output);
 
 function get_total_all_records($connect)
 {
- $statement = $connect->prepare("SELECT * FROM barangay");
+ $statement = $connect->prepare("SELECT * FROM resident");
  $statement->execute();
  return $statement->rowCount();
 }

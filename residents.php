@@ -1,5 +1,5 @@
 <?php include 'includes/header.php';
-       include 'core/function.php';
+      include 'core/function.php';
 ?>
     <section class="content-header">
 
@@ -11,21 +11,18 @@
          <div class="box">
              <div class="box-header">
                <div class="pull-right">
-                 <button type="button" name="add" id="add_button" data-toggle="modal" data-target="#userModal" class="btn btn-success btn-md"><i class="fa fa-fw fa-plus"></i> Add</button>
+                 <button type="button" name="add" id="add_button" data-toggle="modal" data-target="#residentModal" class="btn btn-success btn-md"><i class="fa fa-fw fa-plus"></i> Add</button>
                </div>
                <h3 class="box-title">
-                  Users
+                  Resident
                 </h3>
-
-
              </div>
              <!-- /.box-header -->
              <div class="box-body">
-               <table id="userstbl" class="table table-bordered table-striped">
+               <table id="residenttbl" class="table table-bordered table-striped">
                  <thead>
                  <tr>
                    <th>Name</th>
-                   <th>Username</th>
                    <th>Barangay</th>
                    <th>Command</th>
                  </tr>
@@ -43,45 +40,36 @@
        </div>
        <!-- /.row -->
    </section>
-   <div id="userModal" class="modal fade">
+   <div id="residentModal" class="modal fade">
       <div class="modal-dialog">
-           <form method="post" id="user_form">
+           <form method="post" id="resident_form">
               <div class="modal-content">
               <div class="modal-header">
                <button type="button" class="close" data-dismiss="modal">&times;</button>
-               <h4 class="modal-title"><i class="fa fa-plus"></i> Add User</h4>
+               <h4 class="modal-title"><i class="fa fa-plus"></i> Add Resident</h4>
               </div>
               <div class="modal-body">
                 <div class="form-group">
                       <label>Name</label>
-                      <input type="text" name="name" id="name" class="form-control" placeholder="Name" required />
+                      <input type="text" name="res_name" id="res_name" class="form-control" placeholder="Name" required />
                  </div>
-                  <div class="form-group">
-                        <label>Enter User Name</label>
-                        <input type="text" name="username" id="username" class="form-control" required />
-                   </div>
+                 <div class="form-group">
+                    <label>Barangay</label>
+                    <select class="form-control" name="res_brgy" id="res_brgy" required>
+                      <?php echo get_barangay($connect); ?>
+                    </select>
+                 </div>
+                 <div class="form-group">
+                       <label>Username</label>
+                       <input type="text" name="res_username" id="res_username" class="form-control" placeholder="Username" required />
+                  </div>
                    <div class="form-group">
                       <label>Enter User Password</label>
-                      <input type="password" name="password" id="password" class="form-control" required />
-                   </div>
-                   <div class="form-group">
-                      <label>Enter Access Level</label>
-                      <select class="form-control" name="access" id="access" required>
-                        <option value="">Please Select</option>
-                        <option value="1">Mddrmc</option>
-                        <option value="2">Brgy Official</option>
-                        <option value="3">PAGASA</option>
-                      </select>
-                   </div>
-                   <div class="form-group" id='brgyform'>
-                      <label>Barangay</label>
-                      <select class="form-control" name="brgy" id="brgy" required>
-                        <?php echo get_barangay($connect); ?>
-                      </select>
+                      <input type="password" name="res_password" id="res_password" class="form-control" Placeholder="Password" required />
                    </div>
                 </div>
                   <div class="modal-footer">
-                   <input type="hidden" name="user_id" id="user_id" />
+                   <input type="hidden" name="res_id" id="res_id" />
                    <input type="hidden" name="btn_action" id="btn_action" />
                    <input type="submit" name="action" id="action" class="btn btn-info" value="Add" />
                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

@@ -8,7 +8,7 @@
                  <button type="button" name="input" id="input_button" data-toggle="modal" data-target="#inputModal" class="btn btn-success btn-md"><i class="fa fa-fw fa-plus"></i> Input</button>
                </div>
                <h3 class="box-title">
-                    Weather Chart
+                    Weather Forecast
                 </h3>
              </div>
              <!-- /.box-header -->
