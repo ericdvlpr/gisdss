@@ -44,6 +44,7 @@
               <div class="modal-body">
                     <div class="row">
                       <div class="col-xs-4">
+                        <div id='test'></div>
                           <div class="form-group">
                               <div class="input-group">
                                 <input type="text" name="issue_no" id="issue_no" class="form-control" placeholder="Issue #" required autocomplete="off" />
@@ -99,7 +100,7 @@
                           <div class="form-group">
                             <div class="input-group">
                               <input type="number" name="temp" id="temp" step=".01" class="form-control" placeholder="Temp">
-                              <span class="input-group-addon"><i class="wi wi-sunrise"></i></span>
+                              <span class="input-group-addon">°</span>
                             </div>
                           </div>
                         </div>
@@ -107,7 +108,7 @@
                           <div class="form-group">
                               <div class="input-group">
                                 <input type="number" name="hum" id="hum" step=".01" class="form-control" placeholder="Humidity">
-                                <span class="input-group-addon"><i class="wi wi-sunrise"></i></span>
+                                <span class="input-group-addon">°</span>
                               </div>
                           </div>
                         </div>

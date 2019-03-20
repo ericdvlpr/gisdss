@@ -63,7 +63,7 @@ if(isset($_POST['btn_action']))
    $query = "
    UPDATE users SET
    name = '".$_POST["name"]."',
-   username = '".$_POST["username"]."',
+   username = '".$_POST["username"]."'
     WHERE user_id = '".$_POST["user_id"]."'
    ";
   }

@@ -221,4 +221,24 @@ function list_barangay($connect){
   }
   return $output;
 }
+function view_advisory($connect,$advisoryID){
+  $listOutput = array();
+  $statement = $connect->prepare("SELECT * FROM advisory WHERE advisory_id = '$advisoryID' ");
+  $statement->execute(
+    array(
+     ':advisoryID' => $advisoryID
+    )
+   );
+   $dataOutput = array();
+   $result = $statement->fetchAll();
+   foreach($result as $row)
+   {
+      $dataOutput['issue_no']=$row["issue_no"];
+      $dataOutput['wind']=  $row["alrt_wind"];
+      $dataOutput['wave']=$row["alrt_wave"];
+      $dataOutput['rain']=  $row["alrt_rain"];
+      $dataOutput['issue_date']=  $row["issue_date"];
+   }
+   return $dataOutput;
+}
  ?>

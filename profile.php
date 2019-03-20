@@ -11,9 +11,7 @@
                      <img class="profile-user-img img-responsive img-circle" src="images/default-user.png" alt="User profile picture">
 
                      <h3 class="profile-username text-center"><?php echo $_SESSION['username']; ?></h3>
-
-
-                     <form class="form-horizontal">
+                     <form class="form-horizontal" id="user_form">
                           <div class="box-body">
                             <div class="form-group">
                               <label for="inputEmail3" class="col-sm-2 control-label">Password</label>
@@ -32,7 +30,9 @@
                           </div>
                           <!-- /.box-body -->
                           <div class="box-footer">
-                            <button type="submit" class="btn btn-info pull-right">Update</button>
+                            <input type="hidden" name="user_id" id="user_id" />
+                             <input type="hidden" name="btn_action" id="btn_action" value="Edit" />
+                             <input type="submit" name="action" id="action" class="btn btn-info" value="Update" />
                           </div>
                           <!-- /.box-footer -->
                         </form>

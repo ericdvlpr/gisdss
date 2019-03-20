@@ -309,10 +309,17 @@ $(document).ready(function(){
                 $('#inputModal').modal('show');
                 $('#issue_no').val(data.issue_no);
                 $('#datepicker').val(data.issue_date);
-                $('#valid_date').val(data.valid);
+                $('#valid_date').val(data.valid_date);
                 $('#wind').val(data.wind);
                 $('#wave').val(data.wave);
                 $('#rain').val(data.rain);
+                $('#temp').val(data.temp);
+                $('#hum').val(data.hum);
+                $('#sunrise').val(data.sunrise);
+                $('#sunset').val(data.sunset);
+                $('#sunset').val(data.sunset);
+                $('#moonrise').val(data.moonrise);
+                $('#moonset').val(data.moonset);
                 $('.modal-title').html("<i class='fa fa-pencil-square-o'></i> Edit Forecast");
                 $('#forecast_id').val(forecast_id);
                 $('#action').val('Edit');

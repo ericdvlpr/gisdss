@@ -19,7 +19,7 @@
           <div class="row">
             <div class="col-md-12 col-sm-12">
               <div class="pad">
-                    <div id="map"  style="width:100%;height:700px;"></div>
+                    <div id="map"  ></div>
                 </div>
               </div>
 
