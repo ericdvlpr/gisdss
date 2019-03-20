@@ -28,51 +28,45 @@ if(isset($_POST['btn_action']))
  if($_POST['btn_action'] == 'fetch_single')
  {
   $query = "
-  SELECT * FROM users WHERE user_id = :user_id
+  SELECT * FROM advisory WHERE advisory_id = :advisory_id
   ";
   $statement = $connect->prepare($query);
   $statement->execute(
    array(
-    ':user_id' => $_POST["user_id"]
+    ':advisory_id' => $_POST["advisory_id"]
    )
   );
   $result = $statement->fetchAll();
   foreach($result as $row)
   {
-   $output['name'] = $row['name'];
-   $output['username'] = $row['username'];
-   $output['access'] = $row['access'];
+   $output['issue_no'] = $row['issue_no'];
+   $output['issue_date'] = $row['issue_date'];
+   $output['alrt_wind'] = $row['alrt_wind'];
+   $output['alrt_wave'] = $row['alrt_wave'];
+   $output['alrt_rain'] = $row['alrt_rain'];
   }
   echo json_encode($output);
  }
 
  if($_POST['btn_action'] == 'Edit')
  {
-  if($_POST['password'] != '')
-  {
+
    $query = "
-   UPDATE users SET
-    name = '".$_POST["name"]."',
-    username = '".$_POST["username"]."',
-    password = '".password_hash($_POST["password"], PASSWORD_DEFAULT)."'
-    WHERE user_id = '".$_POST["user_id"]."'
+   UPDATE advisory SET
+   issue_no = '".$_POST["issue_no"]."',
+   issue_date = '".$_POST["issue_date"]."',
+   alrt_wind = '".$_POST["alrt_wind"]."',
+   alrt_wave = '".$_POST["alrt_wave"]."',
+   alrt_rain = '".$_POST["alrt_rain"]."'
+    WHERE advisory_id = '".$_POST["advisory_id"]."'
    ";
-  }
-  else
-  {
-   $query = "
-   UPDATE users SET
-   name = '".$_POST["name"]."',
-   username = '".$_POST["username"]."'
-    WHERE user_id = '".$_POST["user_id"]."'
-   ";
-  }
+
   $statement = $connect->prepare($query);
   $statement->execute();
   $result = $statement->fetchAll();
   if(isset($result))
   {
-   echo 'User Details Edited';
+   echo 'Advisory Edited';
   }
  }
  if($_POST['btn_action'] == 'delete')

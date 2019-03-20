@@ -328,6 +328,30 @@ $(document).ready(function(){
                }
               })
            })
+           $(document).on('click', '.updateAdvisory', function(){
+              var advisory_id = $(this).attr("id");
+              var btn_action = 'fetch_single';
+              $.ajax({
+               url:"core/advisory_action.php",
+               method:"POST",
+               data:{advisory_id:advisory_id, btn_action:btn_action},
+               dataType:"json",
+               success:function(data)
+               {
+                $('#inputAdvisory').modal('show');
+                $('#issue_no').val(data.issue_no);
+                $('#issue_date').val(data.issue_date);
+                $('#alrt_wind').val(data.alrt_wind);
+                $('#alrt_wave').val(data.alrt_wave);
+                $('#alrt_rain').val(data.alrt_rain);
+                $('.modal-title').html("<i class='fa fa-pencil-square-o'></i> Edit Forecast");
+                $('#advisory_id').val(advisory_id);
+                $('#action').val('Edit');
+                $('#btn_action').val('Edit');
+
+               }
+              })
+           })
            $(document).on('click', '.deleteUser', function(){
                 var user_id = $(this).attr("id");
                 var status = $(this).data('status');

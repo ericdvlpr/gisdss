@@ -88,7 +88,7 @@
 
                               </div>
                               <div class="product-info">
-                                <a href='mapView.php?id=<?php echo $barangays["flood"]["brgy_id"];?>&&bname=<?php echo $barangays["flood"]["brgy_name"];?>&&lat=<?php echo $barangays["flood"]["lat"];?>&&long=<?php echo $barangays["flood"]["longi"];?>' class="product-title"><?php echo $barangays['flood']['brgy_name']; ?>
+                                <a href='mapView.php?id=<?php echo $barangays["flood"]["brgy_id"];?>&&bname=<?php echo $barangays["flood"]["brgy_name"];?>&&lat=<?php echo $barangays["flood"]["lat"];?>&&long=<?php echo $barangays["flood"]["longi"];?>&&pop=<?php echo $barangays["flood"]["population"];?>&&dst=f' class="product-title"><?php echo $barangays['flood']['brgy_name']; ?>
                                   <span class="label label-warning pull-right"><?php echo number_format($barangays['flood']['population'],2); ?></span></a>
                                   <span class="product-description">
                                     <i class="wi wi-rain"></i>
@@ -137,7 +137,7 @@
                             ?>
                               <li class="item">
                                 <div class="product-info">
-                                  <a href='mapView.php?id=<?php echo $barangays["storm"]["brgy_id"];?>&&bname=<?php echo $barangays["storm"]["brgy_name"];?>&&lat=<?php echo $barangays["storm"]["lat"];?>&&long=<?php echo $barangays["storm"]["longi"];?>' class="product-title"><?php echo $barangays['storm']['brgy_name']; ?>
+                                  <a href='mapView.php?id=<?php echo $barangays["storm"]["brgy_id"];?>&&bname=<?php echo $barangays["storm"]["brgy_name"];?>&&lat=<?php echo $barangays["storm"]["lat"];?>&&long=<?php echo $barangays["storm"]["longi"];?>&&pop=<?php echo $barangays["storm"]["population"];?>&&dst=ss' class="product-title"><?php echo $barangays['storm']['brgy_name']; ?>
                                     <span class="label label-warning pull-right"><?php echo number_format($barangays['storm']['population'],2); ?></span></a>
                                     <span class="product-description">
                                       <i class="wi wi-rain"></i>
@@ -183,7 +183,7 @@
                           ?>
                             <li class="item">
                               <div class="product-info">
-                                <a  href='mapView.php?id=<?php echo $barangays["landslide"]["brgy_id"];?>&&bname=<?php echo $barangays["landslide"]["brgy_name"];?>&&lat=<?php echo $barangays["landslide"]["lat"];?>&&long=<?php echo $barangays["landslide"]["longi"];?>' class="product-title"><?php echo $barangays['landslide']['brgy_name']; ?>
+                                <a  href='mapView.php?id=<?php echo $barangays["landslide"]["brgy_id"];?>&&bname=<?php echo $barangays["landslide"]["brgy_name"];?>&&lat=<?php echo $barangays["landslide"]["lat"];?>&&long=<?php echo $barangays["landslide"]["longi"];?>&&pop=<?php echo $barangays["landslide"]["population"];?>&&dst=l' class="product-title"><?php echo $barangays['landslide']['brgy_name']; ?>
                                   <span class="label label-warning pull-right"><?php echo number_format($barangays['landslide']['population'],2); ?></span></a>
                                   <span class="product-description">
                                     <i class="wi wi-rain"></i>
@@ -232,7 +232,7 @@
                           ?>
                             <li class="item">
                               <div class="product-info">
-                                <a  href='mapView.php?id=<?php echo $barangays["tsunami"]["brgy_id"];?>&&bname=<?php echo $barangays["tsunami"]["brgy_name"];?>&&lat=<?php echo $barangays["tsunami"]["lat"];?>&&long=<?php echo $barangays["tsunami"]["longi"];?>' class="product-title"><?php echo $barangays['tsunami']['brgy_name']; ?>
+                                <a  href='mapView.php?id=<?php echo $barangays["tsunami"]["brgy_id"];?>&&bname=<?php echo $barangays["tsunami"]["brgy_name"];?>&&lat=<?php echo $barangays["tsunami"]["lat"];?>&&long=<?php echo $barangays["tsunami"]["longi"];?>&&pop=<?php echo $barangays["tsunami"]["population"];?>&&dst=t' class="product-title"><?php echo $barangays['tsunami']['brgy_name']; ?>
                                   <span class="label label-warning pull-right"><?php echo number_format($barangays['tsunami']['population'],2); ?></span></a>
                                   <span class="product-description">
                                     <i class="wi wi-rain"></i>
@@ -293,77 +293,6 @@
                         </div>
                       </div>
                     </div>
-                    <!-- <div class="row">
-                        <div class="col-md-6">
-                              <div class="form-group">
-                                <label> Action Required:</label>
-                              <?php
-                              // if( $forecast["wind"] == 45 || $forecast["wind"] == 61 ){
-                              //   echo '<textarea name="action" class="form-control" rows="8" cols="70" style="display:none;">
-                              //           	Issuance of advisories,
-                              //           	Council meeting
-                              //           	Hazard assessment and scenario development
-                              //           	Risk assessment
-                              //           	Assess critical resources (water supply, bridges, power supply, road network).
-                              //           	Evaluate your capacity (budget,  safe evacuation centers, transportation,
-                              //           	Review of the action plan by task units
-                              //           	Issuance of the advisories for the suspension of classes
-                              //           	Issuance of activities for disaster avoidance (no sailing, no beach activities, avoidance of offshore and outdoor tourism activities)
-                              //           	Issuance of office warning for the suspension of work
-                              //           	Prepare evacuation kit (advisory)
-                              //           </textarea>';
-                              //           echo '<ul>
-                              //           <li>Continue executing plan in signal no. 2(complete operation at day time)</li>
-                              //           <li>Issue advisory that the area in under critical status</li>
-                              //           <li>Avoid unnecessary movement</li>
-                              //           </ul>
-                              //           ';
-                              // } elseif($forecast["wind"] == 62 || $forecast["wind"] == 117){
-                              //   echo '<textarea  name="action" class="form-control" rows="10" cols="80" style="display:none;">
-                              //           	Execute of action plan and issuances of advisory
-                              //           	Pre-emptive Evacuation
-                              //           	Recall of travel order, non-approval for travel order)
-                              //           	Continuation of execution of emergency action plan
-                              //           	Operation close watch
-                              //           	Office order putting MDRR in 24 hour operation
-                              //           </textarea>';
-                              //           echo '<ul>
-                              //           <li>Continue executing plan in signal no. 2(complete operation at day time)</li>
-                              //           <li>Issue advisory that the area in under critical status</li>
-                              //           <li>Avoid unnecessary movement</li>
-                              //           </ul>
-                              //           ';
-                              // }elseif($forecast["wind"] == 118 || $forecast["wind"] == 219){
-                              //   echo '<textarea  name="action" class="form-control" rows="10" cols="80" style="display:none;">
-                              //             	Continue executing plan in signal no. 2
-                              //             (complete operation at day time)
-                              //             	Issue advisory that the area in under critical status
-                              //             	Avoid unnecessary movement
-                              //           </textarea>';
-                              //           echo '<ul>
-                              //           <li>Continue executing plan in signal no. 2(complete operation at day time)</li>
-                              //           <li>Issue advisory that the area in under critical status</li>
-                              //           <li>Avoid unnecessary movement</li>
-                              //           </ul>
-                              //           ';
-                              // }elseif($forecast["wind"] > 219){
-                              //   echo '<textarea  name="action" class="form-control" rows="10" cols="70"  style="display:none;">
-                              //           	Continue executing plan in signal no. 2(complete operation at day time)
-                              //           	Issue advisory that the area in under critical status
-                              //           	Avoid unnecessary movement
-                              //         </textarea>';
-                              //         echo '<ul>
-                              //         <li>Continue executing plan in signal no. 2(complete operation at day time)</li>
-                              //         <li>Issue advisory that the area in under critical status</li>
-                              //         <li>Avoid unnecessary movement</li>
-                              //         </ul>
-                              //         ';
-                              // }
-                              ?>
-
-                            </div>
-                        </div>
-                    </div> -->
                 </div>
                   <div class="modal-footer">
                    <input type="hidden" name="forecast_id" id="forecast_id" />

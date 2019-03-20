@@ -44,7 +44,7 @@ foreach($result as $row)
  $sub_array = array();
  $sub_array[] = $row['issue_no'];
  $sub_array[] = $row['issue_date'];
- $sub_array[] = '<a href="viewAdvisory.php?advisoryID='.$row["advisory_id"].'" name="view" id="'.$row["advisory_id"].'" class="btn btn-info btn-xs viewForcast">View</a> <button type="button" name="update" id="'.$row["advisory_id"].'" class="btn btn-warning btn-xs updateForcast">Update</button>';
+ $sub_array[] = '<a href="viewAdvisory.php?advisoryID='.$row["advisory_id"].'" name="view" id="'.$row["advisory_id"].'" class="btn btn-info btn-xs viewForcast">View</a> <button type="button" name="update" id="'.$row["advisory_id"].'" class="btn btn-warning btn-xs updateAdvisory">Update</button>';
  $data[] = $sub_array;
 }
 

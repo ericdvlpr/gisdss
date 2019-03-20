@@ -4,60 +4,37 @@ function loadMap() {
     var lat = getParameterByName('lat');
     var long = getParameterByName("long");
     var barangayname = getParameterByName("bname");
+    var population = getParameterByName("pop");
+    var dst = getParameterByName("dst");
+    var rgba;
     var map = new Microsoft.Maps.Map(document.getElementById('myMap'), {
         /* No need to set credentials if already passed in URL */
         center: new Microsoft.Maps.Location(lat, long),
         zoom: 18 });
         var center = map.getCenter();
 var infobox = new Microsoft.Maps.Infobox(center, { title: barangayname,
-    description: 'Seattle' });
+    description: 'Population:'+population });
 infobox.setMap(map);
-    var contourLine1, contourLine2, contourLine3, contourLine4, contourLine5, contourLine6;
-    var layer;
-    Microsoft.Maps.loadModule('Microsoft.Maps.Contour', function () {
-        contourLine1 = new Microsoft.Maps.ContourLine([
-                          new Microsoft.Maps.Location(13.023739, 123.452538),
-                          new Microsoft.Maps.Location(13.023546, 123.452775),
-                          new Microsoft.Maps.Location(13.024076, 123.452981),
-                          new Microsoft.Maps.Location(13.024345, 123.452900),
-                          new Microsoft.Maps.Location(13.024862, 123.452909),
-                          new Microsoft.Maps.Location(13.025031, 123.452502),
-                          new Microsoft.Maps.Location(13.025465, 123.452002),
-                          new Microsoft.Maps.Location(13.025996, 123.451413),
-                          new Microsoft.Maps.Location(13.026175, 123.450726),
-                          new Microsoft.Maps.Location(13.025338, 123.450752),
-                          new Microsoft.Maps.Location(13.024523, 123.451701)], 4000);
-      contourLine2 = new Microsoft.Maps.ContourLine([
-                          new Microsoft.Maps.Location(13.023739, 123.452538),
-                          new Microsoft.Maps.Location(13.023546, 123.452775),
-                          new Microsoft.Maps.Location(13.024076, 123.452981),
-                          new Microsoft.Maps.Location(13.024345, 123.452900),
-                          new Microsoft.Maps.Location(13.024862, 123.452909),
-                          new Microsoft.Maps.Location(13.025031, 123.452502),
-                          new Microsoft.Maps.Location(13.025465, 123.452002),
-                          new Microsoft.Maps.Location(13.025996, 123.451413),
-                          new Microsoft.Maps.Location(13.026175, 123.450726),
-                          new Microsoft.Maps.Location(13.025338, 123.450752),
-                          new Microsoft.Maps.Location(13.024523, 123.451701)], 3000);
-        layer = new Microsoft.Maps.ContourLayer([contourLine1,contourLine2], { colorCallback: assignContourColor, polygonOptions: { strokeColor: 'rgba(255, 255, 255, 0)' } });
-        map.layers.insert(layer);
-    });
-    function assignContourColor(value) {
-        var color;
-        if (value >= 4000) {
-            color = 'rgba(25, 150, 65, 0.5)';
-        }
-        else if (value >= 3500) {
-            color = 'rgba(140, 202, 32, 0.5)';
-        }
-        else if (value >= 3000) {
-            color = 'rgba(255, 255, 0, 0.5)';
-        }
-        else if (value >= 2000) {
-            color = 'rgba(235, 140, 14, 0.5)';
-        }
-        return color;
+// var polygon = new Microsoft.Maps.Polygon([new Microsoft.Maps.Location(center.latitude - 0.001, center.longitude - 0.001),
+//     new Microsoft.Maps.Location(center.latitude + 0.002, center.longitude - 0.002),
+//     new Microsoft.Maps.Location(center.latitude + 0.004, center.longitude + 0.003),  new Microsoft.Maps.Location(center.latitude - 0.005, center.longitude + 0.003)], null);
+// map.entities.push(polygon);
+
+    if(dst == 'ss'){
+      rgba = 'rgba(0, 166, 90, 0.5)'; //StormSurge
+    }else if(dst == 'f'){
+      rgba = 'rgba(221, 75, 57, 0.5)';// flood
+    }else if(dst == 'l'){
+      rgba ='rgba(0, 166, 90, 0.3)'; // landslide
+    }else if(dst == 't'){
+      rgba = 'rgba(0, 116, 184, 0.6)'; //tsunami
     }
+
+    Microsoft.Maps.loadModule('Microsoft.Maps.SpatialMath', function () {
+        var center = map.getCenter();
+        var circle1 = createCircle(center, 1, rgba);
+        map.entities.push(circle1);
+    });
 
 }
 function getParameterByName(name, url) {
@@ -69,3 +46,8 @@ function getParameterByName(name, url) {
     if (!results[2]) return '';
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
+function createCircle(center, radius, color) {
+        //Calculate the locations for a regular polygon that has 36 locations which will rssult in an approximate circle.
+        var locs = Microsoft.Maps.SpatialMath.getRegularPolygon(center, radius, 36, Microsoft.Maps.SpatialMath.DistanceUnits.Miles);
+        return new Microsoft.Maps.Polygon(locs, { fillColor: color, strokeThickness: 0 });
+    }
